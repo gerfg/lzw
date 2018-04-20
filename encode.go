@@ -17,7 +17,7 @@ func encode(fileName string) {
 	// for idx, vl := range dict {
 	// 	fmt.Printf("%s - %s\n", idx, vl)
 	// }
-	fmt.Println("============================")
+	// fmt.Println("============================")
 	// fmt.Printf("Bits: %s\n", compr)
 	fileName = fileName[10:]
 	createEncodedFile("decoded/"+fileName+".cpr", compr)
@@ -31,14 +31,14 @@ func encodedString(data []byte, dict map[string]string) (compr string) {
 	compr = ""
 	stop := true
 	for pos1 != sizeData-1 {
-		fmt.Println("")
+		// fmt.Println("")
 		for stop == true {
 			if pos2 > sizeData {
 				pos2 = sizeData
 				stop = false
 			} else {
 				_, ok := dict[getBytesToString(data, pos1, pos2)]
-				fmt.Printf("Matching: %s ok: %b - %s -pos1: %d pos2: %d  sizeData: %d\n", getBytesToString(data, pos1, pos2), ok, dict[getBytesToString(data, pos1, pos2)], pos1, pos2, sizeData)
+				// fmt.Printf("Matching: %s ok: %b - %s -pos1: %d pos2: %d  sizeData: %d\n", getBytesToString(data, pos1, pos2), ok, dict[getBytesToString(data, pos1, pos2)], pos1, pos2, sizeData)
 				if ok == false {
 					stop = false
 				} else {
@@ -46,13 +46,13 @@ func encodedString(data []byte, dict map[string]string) (compr string) {
 				}
 			}
 		}
-		fmt.Println("============================\n ")
+		// fmt.Println("============================\n ")
 		if pos2 > sizeData {
 			pos2 = sizeData - 1
 		}
 		str := getBytesToString(data, pos1, pos2)
 		compr += dict[getBytesToString(data, pos1, pos2-1)]
-		fmt.Printf("> Add to compr: %s - %s\n", getBytesToString(data, pos1, pos2-1), dict[getBytesToString(data, pos1, pos2-1)])
+		// fmt.Printf("> Add to compr: %s - %s\n", getBytesToString(data, pos1, pos2-1), dict[getBytesToString(data, pos1, pos2-1)])
 		// fmt.Printf("Compr: %s\n", compr)
 		// fmt.Printf("Number: %d\n", dictSize)
 		numberBinary := strconv.FormatInt(int64(dictSize), 2)
@@ -65,6 +65,6 @@ func encodedString(data []byte, dict map[string]string) (compr string) {
 		dictSize++
 		stop = true
 	}
-	fmt.Printf("Compr: %s\n", compr)
+	// fmt.Printf("Compr: %s\n", compr)
 	return
 }

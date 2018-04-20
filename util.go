@@ -85,7 +85,16 @@ func createEncodedFile(fileName string, compress string) {
 
 }
 
-func removeZerosFromEnd(compr string) string {
+// Decoding...
+
+func dataToString(data []byte) (compr string) {
+	for _, vl := range data {
+		compr += fmt.Sprintf("%0.8b", vl)
+	}
+	return
+}
+
+func removeZerosLessSignificant(compr string) string {
 	for _ = range compr {
 		if compr[len(compr)-1] == '0' {
 			compr = compr[:len(compr)-2]
